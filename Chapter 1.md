@@ -207,10 +207,10 @@ $$\begin{align*}
 &= \sum(B^2a_j\overline{a}_j - B\overline{C}\overline{b}_ja_j - BC\overline{a}_jb_j - C\overline{C}b_j\overline{b}_j)\\
 &= B^2\sum\lvert a_j \rvert^2 - B\overline{C}\sum a_j\overline{b}_j - BC\sum \overline{a}_j b_j - \lvert C\rvert^2 \sum\lvert b_j\rvert^2\\
 &= B^2A - \lvert C\rvert^2B\\
-&= B(AB - \lvert C\rvert^2) >0
+&= B(AB - \lvert C\rvert^2) \ge 0
 \end{align*}$$
 
-Therefore, $AB>\lvert C\rvert^2$. (QED)
+Therefore, $AB\ge\lvert C\rvert^2$. (QED)
 
 ## Euclidean Spaces
 
@@ -262,5 +262,78 @@ In the other direction, let $s\le x$, $t\le y$. Then, $b^s\in B(x)$, $b^t\in B(y
 Combine the two directions, $$b^{x+y} = b^xb^y$$ (QED)
 
 ### Question 7
-(a) Notice that 
+(a) Notice that $$b^n-1 = (b-1)(b^{n-1}+b^{n-2}+\dots+1).$$ For any $b>1$, $b^{n-1}\ge 1, b^{n-2}\ge 1, \dots, 1\ge 1$, so $b^{n-1}+b^{n-2}+\dots+1\ge n$. Thus, $$b^n-1\ge n(b-1).$$
+(b) If we put in $b^{1/n}$ instead of $b$, $$(b^{1/n})^n - 1\ge n(b^{1/n}-1),$$ so $$b - 1\ge n(b^{1/n}-1)$$
+(c) As $n>0$, $$b^{1/n} - 1\le \frac{b-1}{n}.$$ With $$n>\frac{b-1}{t-1},$$ $$\frac{b-1}{n}<t-1.$$ Thus, we have $b^{1/n}-1<t-1$, then $b^{1/n}<t$.
+(d) Apply $t = y\cdot b^{-w}$, $$b^{1/n}<y\cdot b^{-w}$$ Both sides multiply by $b^w$, $$b^{w+1/n}<y$$
+(e) Apply $t = b^w\cdot y^{-1}$, $$b^{1/n}<b^w\cdot y^{-1}$$ Both sides multiply by $y\cdot b^{1/n}$,
+$$y<b^{w - 1/n}$$
+(f) $\sup A$ exists because we can use the least-upper-bound property of $\mathbb{R}$. $A=\{w\mid b^w<y, w\in \mathbb{R}\}$ is nonempty because we can always choose negative $w$ with sufficiently large $\lvert w\rvert$ to bring down $b^w$. $A$ is bounded above because we can always choose sufficiently large $w$ s.t. $b^w\ge y$.  Then, $\exists x \in \mathbb{R}, x = \sup A$.
+
+Assume, BWOC, that $b^x<y$. Apply (d), if $b^x<y$, then we can find $x+(1/n)>x$ s.t. $b^{x+(1/n)}<y$. Then, $x+(1/n)\in A$, which contradicts with the assumption that $x = \sup A$.
+
+Assume, BWOC, that $b^x>y$. Apply (c), if $b^x>y$, then we can find $x-(1/n)<x$ s.t. $b^{x-(1/n)}>y$. Then, $A$ is bounded by $x-(1/n)$, which contradicts with the assumption that $x = \sup A$.
+
+Therefore, $x=\sup A$ satisfies $b^x=y$.
+
+(g) There is one and only one $x$ satisfying $b^x = y$. Therefore, $x$ is unique. (QED)
+
+### Question 8
+Assume, BWOC, that we can indeed define an order. Then, we know that $i\neq 0$. We can either define it as $i<0$ or $i>0$. If we define as $i<0$, then $-i>0$. Therefore, $$(-i)^2 = (-i)(-i) >0.$$ This is ridiculous because $(-i)^2 = -1<0$. $\Rightarrow\Leftarrow$
+
+If we define as $i>0$, $$i^2 = i\cdot i>0.$$ This is also absurd because $i^2 = -1<0$. $\Rightarrow\Leftarrow$
+
+Therefore, we cannot define as order on $\mathbb{C}$. (QED)
+
+### Question 9
+This definition turns $\mathbb{C}$ into an ordered set because: (i) $\forall z,w\in \mathbb{C}$, one and only one of the following is true: $z<w$, when $a<c$ or $a=c$, $b<d$; $z=w$, when $a=c$ and $b=d$; $z>w$, when $a>c$ or $a=c$, $b>d$. (ii) $\forall x,y,z\in \mathbb{C}$, let $x=a_1+b_1i$, $y=a_2+b_2i$, $z=a_3+b_3i$, where $a_1,a_2,a_3,b_1,b_2,b_3\in \mathbb{R}$, then if $x<y$ and $y<z$, we have four cases: $a_1<a_2$, $a_2<a_3$, then $a_1<a_3\Rightarrow x<z$; $a_1<a_2$, $a_2 = a_3$, $b_2<b_3$, then $a_1<a_3\Rightarrow x<z$; $a_1=a_2$, $b_1<b_2$, $a_2<a_3$, then $a_1<a_3\Rightarrow x<z$; $a_1=a_2$, $b_1<b_2$, $a_2=a_3$, $b_2<b_3$, then $a_1 = a_3$, $b_1<b_3\Rightarrow x<z$. Therefore, $x<y\text{ and }y<z\Rightarrow x<z$. 
+
+It is noteworthy that this ordered set does not have the least-upper-bound property. Consider the counterexample set $\{x\in \mathbb{C}\mid x = a+bi, a<1\}$. This set is clearly nonempty because it contains elements like $-1+5i$. This set is bound above, as $1-10086i$ can be an upper bound of it. Suppose it has a supremum. Its real part must be 1, so all possible candidates must be in the shape of $1+ni, n\in \mathbb{R}$. For any candidate, $1+(n-1)i$ can always be another upper bound of the set. Therefore, this supremum does not exist.
+
+### Question 10
+$$z^2 = a^2-b^2+2abi$$
+$$(\overline{z})^2 = a^2-b^2-2abi$$
+Then, $$z^2= \frac{\lvert w\rvert +u}{2} - \frac{\lvert w\rvert -u}{2}+2\cdot \frac{\sqrt{v^2}}{2}i$$
+When $v\ge 0$, $$z^2 = u+vi = w.$$
+$$(\overline{z})^2= \frac{\lvert w\rvert +u}{2} - \frac{\lvert w\rvert -u}{2}-2\cdot \frac{\sqrt{v^2}}{2}i$$When $v\le 0$, $$(\overline{z})^2 = u+vi = w.$$ Therefore, as a conclusion, with the exception of zero, every complex number has two complex square roots.
+
+### Question 11
+Let $z = a+bi, a,b\in \mathbb{R}$. Then, by $r = \sqrt{a^2+b^2}$, $$w = \frac{a}{\sqrt{a^2+b^2}}+\frac{b}{\sqrt{a^2+b^2}}i.$$ Notice that $\lvert w\rvert = 1$ and $z = rw$. Yes, $w$ and $r$ are always uniquely determined by $z$. 
+
+Under this constraint, let $z = 0$, $r=0$, then we can have infinitely many $w$ satisfying $z=rw$ and $\lvert w\rvert =1$. Then, $w$ and $r$ are not always uniquely determined by $z$.
+
+### Question 12
+For the base case, $n=1$, $$\lvert z_1\rvert \le \lvert z_1\rvert.$$
+Assume that $$\lvert z_1 + \dots + z_n \rvert \le \lvert z_1 \rvert + \dots + \lvert z_n \rvert,$$ then, by Thm 1.33(e), $$\lvert z_1 + \dots + z_{n+1} \rvert \le \lvert z_1 + \dots + z_n \rvert + \lvert z_{n+1} \rvert \le \lvert z_1 \rvert + \dots + \lvert z_{n+1} \rvert$$ (QED)
+
+### Question 13
+$$\begin{align*}
+\lvert \lvert x \rvert - \lvert y \rvert \rvert^2 &= x^2 + y^2 - 2\lvert x \rvert\lvert y \rvert \\ &\le x^2 + y^2 - 2\lvert xy \rvert \\ &\le x^2 + y^2 - 2xy \\ &= \lvert x-y \rvert^2
+\end{align*}$$
+Therefore, $\lvert \lvert x \rvert - \lvert y \rvert \rvert \le \lvert x-y \rvert$. (QED)
+
+### Question 14
+Notice that $$\lvert 1+z \rvert^2 = (1+z)\overline{(1+z)} = (1+z)(1+\overline{z}).$$ Similarly, $$\lvert 1-z \rvert^2 = (1-z)\overline{(1-z)} = (1-z)(1-\overline{z}).$$ Then, $$\lvert 1+z \rvert ^2 + \lvert 1-z \rvert ^2 = 2 + 2z\overline{z} = 4$$
+
+### Question 15
+Inspecting the proof to Thm 1.35 above, the most obvious case is when $$\sum_{j=1}^n \lvert Ba_j - Cb_j \rvert^2 = 0,$$ which requires that $\forall j$, $$(\sum_{j=1}^n \lvert b_j\rvert^2)a_j = (\sum_{j=1}^n a_j\overline{b}_j)b_j.$$
+The other case to let the equality hold is through $B = 0$ and therefore, $\forall j, b_j = 0$. This makes both sides of the inequality zero. 
+### Question 16
+To simplify the discussion, we align the first axis with the vector $\mathbf{x} - \mathbf{y}$: Let $$\mathbf{x} = \left(\frac{d}{2}, \underbrace{0, \dots, 0}_{k-1\text{ zeros}}\right)$$ $$\mathbf{y} = \left(-\frac{d}{2}, \underbrace{0, \dots, 0}_{k-1\text{ zeros}}\right)$$ and $$\mathbf{z} = (z_1,\dots,z_k).$$ Therefore, $$\lvert \mathbf{z} - \mathbf{x} \rvert = \left(z_1 - \frac{d}{2}\right)^2+z_2^2+\dots+z_k^2$$ and $$\lvert \mathbf{z} - \mathbf{y} \rvert = \left(z_1 + \frac{d}{2}\right)^2+z_2^2+\dots+z_k^2.$$ Equating the two, $$\left(z_1 - \frac{d}{2}\right)^2 = \left(z_1 + \frac{d}{2}\right)^2,$$ which results in $z_1 = 0$. Now, we can rewrite the vector $\mathbf{z}-\mathbf{x}$, $\mathbf{z}-\mathbf{y}$. $$\mathbf{z}-\mathbf{x} = \left(-\frac{d}{2}, z_2, \dots, z_k\right)$$and $$\mathbf{z}-\mathbf{y} = \left(\frac{d}{2}, z_2, \dots, z_k\right).$$ Therefore, $$\lvert \mathbf{z} - \mathbf{x} \rvert^2 = \lvert \mathbf{z} - \mathbf{y} \rvert^2 = r$$ is equivalent to $$z_2^2+\dots+z_k^2 = r^2 - \frac{d^2}{4}.$$ When the right hand side is positive (i.e., $2r>d$), there are infinitely many sets of $z_2, \dots, z_k$ as solutions of the equation, so we have infinitely many $\mathbf{z}$. When the right hand side is zero (i.e., $2r = d$), the only option is $z_2 = \dots = z_k = 0$, so we only have one $\mathbf{z}$. When the right hand side is negative (i.e., $2r<d$), there is no $z_2, \dots, z_k$ satisfying the equation because the sum of squares cannot be negative, which leads to no $\mathbf{z}$. 
  
+When $k=2$, we are discussing the case of two circles. If $2r>d$, there are 2 $\mathbf{z}\in \mathbb{R}^k$ satisfying the condition. If $2r = d$, there is only 1 such $\mathbf{z}$. If $2r < d$, there is no such $\mathbf{z}$.
+
+When $k=1$, if $2r\neq d$, then we do not have any point satisfying the condition. If $2r=d$, we have only one point (the origin, in the aforementioned setting, or the middle point of the connecting line segment of $\mathbf{x}$ and $\mathbf{y}$) satisfying that condition.
+### Question 17
+Let $\mathbf{x} = (x_1, \dots, x_k)$, $\mathbf{y} = (y_1, \dots, y_k)$, then $\mathbf{x} - \mathbf{y} = (x_1 - y_1,\dots, x_k - y_k)$, $\mathbf{x} + \mathbf{y} = (x_1 + y_1,\dots, x_k + y_k)$. Therefore,
+$$\begin{align*}
+\lvert \mathbf{x}+\mathbf{y} \rvert^2 + \lvert \mathbf{x}-\mathbf{y} \rvert^2 &= (x_1^2 + y_1^2 + 2x_1y_1) + \dots + (x_k^2 + y_k^2 + 2x_ky_k)\\
+&+ (x_1^2 + y_1^2 - 2x_1y_1) + \dots + (x_k^2 + y_k^2 - 2x_ky_k)\\
+&= 2(x_1^2 + \dots + x_k^2) + 2(y_1^2 + \dots + y_k^2)\\
+&= 2\lvert\mathbf{x}\rvert^2 + 2\lvert\mathbf{y}\rvert^2
+\end{align*}$$ (QED)
+### Question 18
+Choose $k=2$ as the base case. $\forall \mathbf{x} = (x_1, x_2)\in \mathbb{R}^2$ ($\mathbf{x} \neq 0$), where $x_1, x_2\in \mathbb{R}$, $\exists \mathbf{y} = (-x_2,x_1)$ such that $\mathbf{x}\cdot\mathbf{y} = 0$. If $\mathbf{x}=0$, then any $\mathbf{y}\neq 0$ satisfies $\mathbf{x}\cdot \mathbf{y}=0$.
+
+Then, assume that at some arbitrary $k$, $\forall \mathbf{x}\in \mathbb{R}^k$, $\exists \mathbf{y}\in \mathbb{R}^k$ s.t. $\mathbf{x}\cdot\mathbf{y} = 0$. Then, consider $$\mathbf{x}' = (\underbrace{x_1,\dots,x_k}_{\text{coordinates of }\mathbf{x}}, x_{k+1})\in \mathbb{R}^{k+1},$$ then $\exists \mathbf{y}'\in \mathbb{R}^{k+1}$ s.t. $$\mathbf{y}' = (\underbrace{y_1, \dots, y_k}_{\text{coordinates of }\mathbf{y}}, 0)\in \mathbb{R}^{k+1}$$ Notice that $\mathbf{x}'\cdot \mathbf{y}' = \sum_{i=1}^k x_iy_i = 0$, so $\sum_{i=1}^{k+1} x_iy_i = \sum_{i=1}^k x_iy_i +0=0$. (QED)
+

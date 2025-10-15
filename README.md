@@ -3,8 +3,10 @@ My personal exam review note for Duke University's MATH 531 (Fall 2025), taught 
 
 The notes are largely based on Rudin, W. (1976) Principles of Mathematical Analysis. 3rd Edition, McGraw-Hill, New York, 145. However, I also put in some synthesis, personal ideas, ideas from related courses/resources.
 
-I created the markdown files through [Obsidian](https://github.com/obsidianmd/obsidian-releases). It is readable in Github but the LaTeX expressions may not appear as supposed.
+I created the markdown files through [Obsidian](https://github.com/obsidianmd/obsidian-releases). The best practice of reading the markdown files is download to your device and read it using Obsidian. It is readable in Github but the LaTeX expressions may not appear as supposed.
 
-Common Abbr:
-BWOC = By way of contradiction
+Common Abbr:\
+BWOC = By way of contradiction\
 WLOG = Without loss of generality
+
+For any comments or question, reach out to me: [My email](mailto:xz455@duke.edu?subject=%5BReal%20Analysis%20Notes%5D)

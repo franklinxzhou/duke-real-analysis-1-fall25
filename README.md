@@ -9,4 +9,4 @@ Common Abbr:\
 BWOC = By way of contradiction\
 WLOG = Without loss of generality
 
-For any comments or question, reach out to me: [My email](mailto:xz455@duke.edu?subject=%5BReal%20Analysis%20Notes%5D)
+For any comment or question, reach out to me: [My email](mailto:xz455@duke.edu?subject=%5BReal%20Analysis%20Notes%5D)

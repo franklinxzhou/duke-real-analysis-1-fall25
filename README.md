@@ -1,5 +1,5 @@
 # MATH 531@Duke
-My personal exam review note for Duke University's MATH 531 (Fall 2025), taught by Dr. Jayce Getz. 
+My personal exam review note for Duke University's MATH 531 (Fall 2025), taught by Dr. Jayce Getz. This semester covers Rudin Chapters 1-7, with 1-3 before the midterm and 4-7 after the midterm.
 
 The notes are largely based on Rudin, W. (1976) Principles of Mathematical Analysis. 3rd Edition, McGraw-Hill, New York, 145. However, I also put in some synthesis, personal ideas, ideas from related courses/resources.
 

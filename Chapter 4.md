@@ -174,3 +174,131 @@ If $y\in f(\overline{E})$, then $\exists p\in X$ s.t. $y=f(p)$. $p\in \overline{
 ### Question 3
 $Z(f) = f^{-1}(\{0\})$. Proof done by **Corr** of **Thm** 4.8. 
 
+### Question 4
+(Question 2, Homework 4)
+For the first conclusion, since $E$ is a dense subset of $X$, $\forall x\in X$, either $x\in E$ or $x$ is a limit point of $E$. In the former case, $f(x)\in f(E)$. In the latter case, $\exists x'\in E$, $x'\neq x$, such that $x'\in B_\delta(x)$. As $f$ is continuous, $f(x')\in B_\epsilon(f(x))$. Notice that $f(x')\in f(E)$, so $f(x)\in (f(E))'$. To sum up, $\forall y\in f(X)$, either $y\in f(E)$ or $y$ is a limit point of $f(E)$.
+
+For the second conclusion, since $E$ is dense in $X$, for this $p$, either $p\in E$ or $p$ is a limit point of $E$. In the former case, $g(p)=f(p)$ still holds. In the latter case, fix an arbitrary $\epsilon>0$, then $\exists \delta_1 >0$, $x\in B_{\delta_1}(p)$ implies $f(x)\in B_\epsilon(f(p))$; $\exists \delta_2 >0$, $x\in B_{\delta_2}(p)$ implies $f(x)\in B_\epsilon(f(p))$. Let $\delta = \min\{\delta_1, \delta_2\}$. With the definition of a limit point, we can always find $x_0\in B_\delta(p)\cap E$. Then, $f(x_0)\in B_\epsilon(f(p))$. With a similar argument, $g(x_0) \in B_\epsilon(g(p))$. Notice $f(x_0) = g(x_0)$, then $d_Y(f(x_0), g(x_0)) = 0$. Also, $d_Y(f(p), f(x_0))<\epsilon$, $d_Y(g(p), g(x_0))<\epsilon$. This follows that $$d_Y(f(p), g(p)) \le d_Y(f(p), f(x)) + d_Y(f(x), g(x)) + d_Y(g(x), g(p))<2\epsilon$$
+Since $\epsilon$ is arbitrary, $g(p) = f(p)$ if $p$ is a limit point of $X$. 
+
+### Question 5
+(Question 2, Homework 5)
+We firstly prove the existence of such a function.
+
+If $E$ is a closed subset of $\mathbb{R}$, then $\mathbb{R} - E$ is open. According to Exercise 29 in Chapter 2, every open set in $\mathbb{R}$ is the union of an at most countable collection of disjoint segments.
+$$\mathbb{R} - E = \bigcup_{n\in \mathbb{N}}(a_n, b_n),$$
+where the boundary points $a_n$, $b_n$ are guaranteed to be in $E$ because $E$ is closed and $\mathbb{R} - E$ is not closed.
+
+Now, I can apply the idea of interpolation,
+$$g(x) = \begin{cases}
+    f(x) & x\in E\\
+    f(a_n)+\frac{f(b_n) - f(a_n)}{b_n - a_n} & x\in (a_n, b_n), \text{ where }\lvert a_n\rvert <\infty, \lvert b_n\rvert<\infty\\
+    f(b_n) & x\in (a_n, b_n), \text{ where }a_n = - \infty, \lvert b_n\rvert<\infty\\
+    f(a_n) & x\in (a_n, b_n), \text{ where }\lvert a_n\rvert <\infty, b_n = \infty\\
+\end{cases}$$
+
+On $E$, $g(x)$ is continuous because as $f(x)$ is continuous, $\forall \epsilon>0$, $\exists \delta>0$ such that $\lvert x - x'\rvert <\delta$ implies $\lvert f(x) - f(x')\rvert <\epsilon$. One more step, this in turn implies that $\lvert g(x) - g(x')\rvert < \epsilon$. 
+
+The reason that $g$ is continuous is that it is continuous on $E$, linear functions are continuous on their respective segments, and all segments have boundary values matched. 
+
+Then, to consider the case of an open $E$, we raise the following counterexample. Let 
+$$f(x) = \frac{1}{x}$$
+defined on the open $E = (-\infty, 0)\cup (0,\infty)$. It is impossible, as $$\lim_{x\rightarrow 0^-}f(x) = -\infty$$
+and 
+$$\lim_{x\rightarrow 0^+}f(x) = \infty,$$
+to find some continuous $g(x)$ no matter how we define $g(0)$. From another perspective, the segments cannot have the boundary values matched.
+
+Therefore, the result is false without requiring a closed $E$.
+
+All the discussion above are based on real-valued functions. For vector-valued functions, the proof is straightforward because a vector-valued function is continuous if and only if its components are all continuous. 
+
+### Question 6
+Suppose that $f$ is continuous on $E$. Since $E$ is compact, it is also bounded and closed, so $\exists M_1\in \mathbb{R}$, $$|x|\le M_1, \qquad \forall x\in E.$$On a compact set $E$, if $f$ is continuous on $E$, then $f(E)$ is closed and bounded (**Thm** 4.15). This follows that $\exists M_2\in \mathbb{R}$,  $$|f(x)|\le M_2, \qquad \forall f(x)\in f(E).$$
+In light of that, the euclidean norm of a point $(x,f(x))$ is $$\lVert (x,f(x))\rVert = \sqrt{x^2+(f(x))^2}\le \sqrt{M_1^2+M_2^2},$$ which shows that the graph is bounded. 
+
+Next, we want to show it is closed. Suppose that $(x_0, y_0)$ is an arbitrary limit point, to which a sequence of points $\{(x_n, f(x_n))\}$ converges. Since $E$ is compact, $x_0\in E$. Then, piecewise, $x_n\to x_0$, $f(x_n)\to y_0$. We fix an arbitrary $\epsilon>0$, then $\exists \delta >0$, $$|x_n - x_0|<\delta \Rightarrow |f(x_n) - f(x_0)|<\epsilon.$$
+Notice that for this $\delta$, $\exists N_1\in \mathbb{N}$, $n>N_1$ implies $|x_n - x_0|<\delta$. Then, $$n>N_1\Rightarrow |f(x_n) - f(x_0)|<\epsilon.$$
+Meanwhile, $\exists N_2\in \mathbb{N}$, $$n>N_2\Rightarrow |f(x_n) - y_0|<\epsilon.$$
+Owing to the uniqueness of limit for the sequence $\{f(x_n)\}$, $y = f(x_0)$. This follows the arbitrary limit point $(x_0, f(x_0))\in (E, f(E))$, then the graph is closed. 
+
+Therefore, the graph is compact.
+
+Suppose that f(x) is not continuous at some particular $x_0\in E$, and assume, BWOC, that the graph is still compact. Construct a sequence of points $\{P_n\}$, where $P_n = (x_n, f(x_n))$ on the graph and $x_n\to x_0$, but $\exists \epsilon>0$, $|f(x_n) - f(x_0)|\ge \epsilon$ for all $n$. Since the graph is compact, it is closed, so $\exists$ a subsequence of $\{P_n\}$, say $\{P_{n_k}\}$, that converges to some $(x_0, f(x_0))$ in the graph (as $x_n\to x_0$). As part of $\{P_n\}$, $|f(x_n) - f(x_0)|\ge \epsilon$; however, since $f(x_{n_k})\to f(x_0)$, for this $\epsilon$, $\exists N\in \mathbb{N}$ s.t. $k>N$ implies $|f(x_n) - f(x_0)|<\epsilon$. $\Rightarrow \Leftarrow$.
+
+### Question 7
+First, we prove that $f$ is bounded on $\mathbb{R}^2$. Notice that $$(|x| - y^2)^2\ge 0$$ $$x^2 - 2|x|y^2 + y^4 \ge 0$$ $$\frac{|x|y^2}{x^2+y^4}\le \frac{1}{2}$$
+Second, we assess the behavior of $f$ and $g$ around (0,0): For $g$, to balance the powers in the denominator, substitute $x=y^3$ into $g(x,y)$: $$g(y^3, y) = \frac{(y^3)(y^2)}{(y^3)^2+y^6} = \frac{1}{2y}$$ As $y\to 0$, $g\to \infty$. Then, it is clearly not continuous around $(0,0)$.
+
+For $f$, to balance the powers in the denominator, substitute $x=y^2$ into $f(x,y)$: $$f(y^2,y) = \frac{(y^2)(y^2)}{(y^2)^2+y^4} = \frac{1}{2}$$ Along this path, $f(x,y)\to 1/2$, but $f(0,0) = 0$, so $f$ is not continuous around $(0,0)$.
+
+The restriction of $f$ to an arbitrary straight line on $\mathbb{R}^2$, provided the line is represented as $x = ay$, $a\in \mathbb{R}$ (notice it needs to pass through the origin), is $$f(ay,y) = \frac{(ay)(y^2)}{(ay)^2+y^4}$$
+As $y\to 0$, $$\lim_{y\to 0}f(ay) = \lim_{y\to 0} \frac{0}{y} = 0,$$ which proves that the restriction of $f$ to any straight line is continuous in the neighborhood of $(0,0)$.
+
+The restriction of $g$ to an arbitrary straight line on $\mathbb{R}^2$, provided the line is represented as $x = ay$, $a\in \mathbb{R}$, is $$g(ay, y) = \frac{(ay)(y^2)}{(ay)^2+y^6}$$
+As $y\to 0$, $$\lim_{y\to 0} g(ay) = \lim_{y\to 0}\frac{0}{y^3} = 0,$$ which proves that the restriction of $g$ to any straight line is continuous in the neighborhood of $(0,0)$.
+
+### Question 8
+(Idea of [Amit Rajaraman](https://math.stackexchange.com/users/447210/amit-rajaraman) on Math Stack Exchange)
+
+Assume, BWOC, that $f$ is not bounded. WLOG, assume that it is not bounded above. Then, $\forall n\in \mathbb{N}$, $\exists x_n\in E$ s.t. $f(x_n)>n$. Also notice that since $E$ is bounded, there is a convergent subsequence of $\{x_n\}$, denoted as $\{x_{n_k}\}$. This subsequence is therefore, Cauchy, so $\forall \delta>0$, $\exists N\in \mathbb{N}$ s.t. $r,s\ge N$ implies $|x_{n_r} - x_{n_s}| <\delta$.
+
+In the meantime, $f$ is uniformly continuous. Then, for $\epsilon = 1$, $\exists \delta>0$ s.t. $\forall x_n$ in the sequence described above, $$|x_{n_r} - x_{n_s}|<\delta \quad \Rightarrow \quad |f(x_{n_r}) - f(x_{n_s})|< 1$$
+Now, fix a specific index $j>N$, $\forall k>j$, $$|f(x_{n_k}) - f(x_{n_j})|<1$$ This implies $$f(x_{n_k})<f(x_{n_j}) + 1;$$ i.e., $\{f(x_{n_k})\}_{k>j}$ is bounded by $f(x_{n_j})+1$. Notice that $f(x_{n_k})>n_k$, which goes to infinity. $\Rightarrow\Leftarrow$.
+
+If the condition of bounded $E$ is omitted, then the above proof will fail because it is not guaranteed that $\{x_{n_k}\}$ is convergent/Cauchy.
+
+### Question 9
+We can prove that To every $\epsilon>0$ there exists a $\delta>0$ such that $\mathrm{diam} f(E)<\epsilon$ for all $E\subset X$ with $\mathrm{diam} E<\delta$ $\Leftrightarrow$ **Def** 4.18.
+
+Suppose the new condition holds. Fix an arbitrary $\epsilon>0$, then $\exists$ a corresponding $\delta>0$. For any arbitrary $E\subset X$ with $\mathrm{diam} E<\delta$, $$\sup_{p,q\in E}d_X(p,q)<\delta.$$ Then, we can find $x,y\in E$ s.t. $d_X(x,y)<\delta$. This results in $\mathrm{diam} f(E)<\epsilon$, which means $$\sup_{p,q\in E}d_Y(f(p), f(q))<\epsilon.$$ For our $x,y\in E$, $d_Y(f(x), f(y))<\epsilon$. 
+
+Therefore, $\forall \epsilon>0$, $\exists \delta >0$, $d_Y(f(x),f(y))<\epsilon$ whenever $d_X(x,y)<\delta$, $x,y\in E$. This is **Def** 4.18. 
+
+Suppose **Def** 4.18 holds. Fix an arbitrary $\epsilon>0$. Then, we choose some $0< \zeta < \epsilon$, $\exists \delta>0$, so that $d_X(x,y)<\delta$ implies $d_Y(f(x), f(y))<\zeta$. Under this scenario, in any subset $E\subset X$, if $\mathrm{diam} E<\delta$, $\forall p,q\in E$, $d_X(p,q)<\delta$. This follows $d_Y(f(p), f(q))<\zeta$, so $\sup \{d_Y(f(p), f(q)): p,q\in E\} \le \zeta < \epsilon$. This is equivalent to say, $\mathrm{diam} f(E) < \epsilon$. Thus, the condition in this question holds.
+### Question 10
+Assume, BWOC, that $f$ is not uniformly continuous. Construct $\{p_n\}$, $\{q_n\}$. **Thm** 2.37 guarantees, based on the compactness of $X$, that $\exists p,q\in X$, $p_n\to p$, $q_n\to q$. 
+
+We construct $d_X(p_n, q_n)\to 0$. 
+
+By definition of convergence, $\forall \delta>0$, $\exists N_1\in \mathbb{N}$ s.t. $n\ge N_1$ implies $d_X(p_n, q_n)< \delta/3$; $\exists N_2\in \mathbb{N}$ s.t. $n\ge N_2$ implies $d_X(p_n, p)<\delta/3$; $\exists N_3\in \mathbb{N}$ s.t. $n\ge N_3$ implies $d_X(q_n, p)<\delta/3$. By the triangle inequality, $$d_X(p,q) \le d_X(p,p_n) + d_X(p_n, q_n) + d_X(q_n,q)<\delta$$ Since $\delta$ is arbitrary, as $n\to \infty$, $d_X(p,q)=0$. We therefore have $p=q$. 
+
+Following this, let $r\in Y$, then **Thm** 4.2 says $f(p_n)\to r$, $f(q_n)\to r$. $$d_Y(f(p_n), f(q_n))\le d_Y(f(p_n), r) + d_Y(f(q_n), r)$$ In the same way of using the triangle inequality, $d_Y(f(p_n), f(q_n))\to 0$. 
+
+A direct result of non-uniform continuity is that $\exists \epsilon>0$, when $d_X(p_n, q_n)\to 0$, $d_Y(f(p_n), f(q_n))>\epsilon$. $\Rightarrow\Leftarrow$
+### Question 11
+Suppose $f$ is uniformly continuous. Then, fix an arbitrary $\epsilon>0$, $\exists \delta>0$ s.t. $x,y\in X$ and $d_X(x,y)<\delta$ implies $d_Y(f(x), f(y))<\epsilon$. For this $\delta$, since $\{x_n\}\subset X$ is Cauchy, $\exists N\in \mathbb{N}$ s.t. $m,n>N$, $m,n\in \mathbb{N}$ implies $d_X(x_m, x_n)<\delta$. Then, this implies that $d_Y(f(x_m), f(x_n))<\epsilon$. Restating the logic flow, $\exists N\in \mathbb{N}$ s.t. $m,n>N$, $m,n\in \mathbb{N}$ implies $d_Y(f(x_m), f(x_n))<\epsilon$. Thus, $\{f(x_n)\}$ is a Cauchy sequence.
+### Question 12
+
+
+### Question 13
+
+### Question 14
+(Question 3, Homework 5)
+
+### Question 15
+(Question 4, Homework 5)
+
+### Question 16
+
+### Question 17
+
+### Question 18
+
+### Question 19
+
+### Question 20
+
+### Question 21
+(Question 5, Homework 5)
+
+### Question 22
+
+### Question 23
+(Question 6, Homework 5)
+
+### Question 24
+
+### Question 25
+(Question 7, Homework 5)
+
+### Question 26

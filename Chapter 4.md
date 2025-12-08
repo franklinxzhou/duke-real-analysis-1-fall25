@@ -165,4 +165,12 @@ Let $f$ be monotonic on $(a,b)$. Then the set of points of $(a,b)$ at which $f$ 
 The last section of the chapter, *Infinite Limits and Limits at Infinity*, is more or less in place to ensure the rigor of the language.
 
 ## Exercises
+### Question 1
+Consider $$f(x) = \begin{cases} 1 & x\in \mathbb{Q}\\ 0 & x\notin \mathbb{Q}\end{cases}$$ This function shouts "NO".
+
+### Question 2
+If $y\in f(\overline{E})$, then $\exists p\in X$ s.t. $y=f(p)$. $p\in \overline{E}$. Since $\overline{E} = E\cup E'$, if $p\in E$, then $y\in f(E)\subset \overline{f(E)}$. If $p\in E'$, fix an arbitrary $\epsilon>0$: $\exists \delta>0$, $\exists x_0\in E$ s.t. $x_0\in B_\delta(p)$. This implies $\exists f(x_0)\in f(E)$ s.t. $f(x_0)\in B_\epsilon(y)$. Then, $y\in (f(E))'\subset \overline{f(E)}$.
+
+### Question 3
+$Z(f) = f^{-1}(\{0\})$. Proof done by **Corr** of **Thm** 4.8. 
 

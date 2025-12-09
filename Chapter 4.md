@@ -268,17 +268,52 @@ A direct result of non-uniform continuity is that $\exists \epsilon>0$, when $d_
 ### Question 11
 Suppose $f$ is uniformly continuous. Then, fix an arbitrary $\epsilon>0$, $\exists \delta>0$ s.t. $x,y\in X$ and $d_X(x,y)<\delta$ implies $d_Y(f(x), f(y))<\epsilon$. For this $\delta$, since $\{x_n\}\subset X$ is Cauchy, $\exists N\in \mathbb{N}$ s.t. $m,n>N$, $m,n\in \mathbb{N}$ implies $d_X(x_m, x_n)<\delta$. Then, this implies that $d_Y(f(x_m), f(x_n))<\epsilon$. Restating the logic flow, $\exists N\in \mathbb{N}$ s.t. $m,n>N$, $m,n\in \mathbb{N}$ implies $d_Y(f(x_m), f(x_n))<\epsilon$. Thus, $\{f(x_n)\}$ is a Cauchy sequence.
 ### Question 12
+*Statement*: If $g: X\to Y$ and $f: Y\to Z$ are both uniformly continuous, then $h: X\to Z$, where $h(x) = f(g(x))$, is uniformly continuous. 
+*Proof*: Since $f$ is uniformly continuous, then fix an arbitrary $\zeta>0$, $\exists \epsilon>0$ s.t. $y_1, y_2\in Y$, $d_Y(y_1, y_2)<\epsilon$ implies $d_Z(f(y_1), f(y_2))<\zeta$. Since $g$ is uniformly continuous, then to make $d_Y(y_1, y_2)<\epsilon$, $\exists \delta>0$, we need $d_X(x_1, x_2)<\delta$, $x_1, x_2\in X$, $y_1 = f(x_1)$, $y_2 = f(x_2)$. 
 
+Therefore, $\forall \zeta>0$, $\exists \delta>0$, $x_1, x_2\in X$, $d_X(x_1,x_2)<\delta$ implies $d_Z(f(g(x_1)), f(g(x_2))) = d_Z(h(x_1), h(x_2))$. This proves that $h$ is uniformly continuous.
 
 ### Question 13
+Following the hint, for each $p\in X$ and each $n\in \mathbb{N}$, let $V_n(p) = \{q\in E: q\in B_{1/n}(p)\}$. Under this construction, the diameter of the domain sets is very small. $$\mathrm{diam}(V_n(p))\le \frac{2}{n}$$ $$\mathrm{diam}(V_n(p))\to 0$$
+ Since $f$ is uniformly continuous, **Exercise 9** says that $$\mathrm{diam}(f(V_n(p)))\to 0.$$
+ Notice that $\overline{f(Y_n(p))}$ shares the diameter with $f(V_n(p))$ and if $\mathrm{diam}\left(\overline{f(V_n(p))}\right)\to 0$, there is only one single point in the intersection (**Thm** 3.10). Let's denote this point as $g(p)$. 
+
+  Next, I will show that $g(p)$ is continuous. Fix an arbitrary $\epsilon>0$, then since $f$ is uniformly continuous, $\exists \delta>0$ s.t. $\forall x,y\in E$, $d_X(x,y)<\delta$ implies $d_Y(f(x), f(y))<\epsilon/3$. We find $p,q$ with $d_X(p,q)<\delta$. Then, as $x\to p$, $g(p)$ is the limit of $f(x)$; as $y\to q$, $g(q)$ is the limit of $f(y)$. Fix $x,y\in E$ s.t. $d_X(x,p)<\delta$, $d_X(y,q)<\delta$, $d_X(x,y)< \delta$. Then, we have $d_Y(f(x), g(p))< \epsilon/3$, $d_Y(f(y), g(q))<\epsilon/3$. Then, $$d_Y(g(p), g(q))\le d_Y(g(p), f(x))| + d_Y(f(x), f(y) + d_Y(f(y), g(q)))<\epsilon.$$
+  This follows that $g(p)$ is continuous. Notice that $g(p)$ is defined as the intersection of the closures, it must cover the rest of $X$. Also, $$g(p) = f(p)$$ whenever $p\in E$. It is hence a valid continuous extension of $f$. 
 
 ### Question 14
-(Question 3, Homework 5)
+(Question 3, Hom. work 5)
+Let $g(x) = f(x) - x$. Then, we check for the signs of the values at $x=0$ and $x=1$.
+$$g(0) = f(0) - 0$$
 
+Since $f(0)\in I$, $f(0)\geq 0$, so $g(0)\geq 0$.
+
+$$g(1) = f(1) - 1$$
+
+Since $f(1)\in I$, $f(1)\leq 1$, so $g(1)\leq 0$.
+
+Therefore, with $g(0) \geq 0$ and $g(1)\leq 0$, $0\in [g(1), g(0)]$. Apply **Thm** 4.23 (Intermediate Value Theorem), since $0\in [g(1), g(0)]$, $\exists x\in (0,1)$ such that $g(x) = 0$. Equivalently, this $x\in I$ makes $f(x) = x$.
 ### Question 15
 (Question 4, Homework 5)
+We approach this question by proving the contrapositive. Suppose $f: \mathbb{R}\rightarrow \mathbb{R}$ is not monotonic. Then, $\exists x_1, x_2, \Delta\in \mathbb{R}$, $\Delta>0$, 
+$$f(x_1)>f(x_1+\Delta)$$
+$$f(x_2)<f(x_2+\Delta)$$
 
+Without the loss of generality, assume that $x_1<x_2$. The case of $x_1>x_2$ is similar.
+
+Now, we have defined a compact subset $[x_1, x_2+\Delta]\subset \mathbb{R}$. We can apply Rudin theorem 4.16, 
+$$m = \inf_{x\in[x_1,x_2+\Delta]}f(x),$$
+then there exists $p\in [x_1,x_2+\Delta]$ such that $m = f(p)$. Observe that $p\neq x_2+\Delta$ nor $p\neq x_1$. Therefore, $p\in (x_1, x_2+\Delta)$, an open set. 
+$$f(p) = \inf_{x\in(x_1,x_2+\Delta)}f(x)$$
+
+Now we discuss if $f((x_1,x_2+\Delta))$ is an open set. Centered at $f(p)$, find a neighborhood $B_\epsilon(f(p))$. Clearly, for some elements $q\in B_\epsilon(f(p))$, $q<f(p)$. Thus, $q\notin f((x_1,x_2+\Delta))$. 
+
+This negates that $f((x_1,x_2+\Delta))$ is an open set, and further negates that $f$ is an open mapping. 
+
+Therefore, every continuous open mapping of $\mathbb{R}\rightarrow \mathbb{R}$ is monotonic.
 ### Question 16
+$[x]$: Both $f(n^+)=n$ and $f(n^-)=n-1$ exist, so discontinuity of the first kind.
+$(x)$: Both $f(n^+) = 0$ and $f(n^-) = 1$ exist, so discontinuity of the first kind.
 
 ### Question 17
 
